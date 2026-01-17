@@ -1,27 +1,14 @@
 """
-Problem 182: Simple ATM
-Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
+Problem 182: BMI Filter
+Error Type: TYPE_ERROR
 Difficulty: Medium
 """
 
-# Problem: A simple ATM withdrawal function with a logic flaw.
-# Expected Output: "Withdrawal successful. New balance: 50"
+def update_bmi(current_val, input_val):
+    # Intent: Add input to current
+    # Bug: input_val assumed int, might be string (common in input())
+    return current_val + input_val
 
-balance = 100
-
-def withdraw(amount):
-    global balance
-    if balance > amount: # Should be balance >= amount
-        balance -= amount
-        print(f"Withdrawal successful. New balance: {balance}")
-    else:
-        print("Insufficient funds.")
-
-withdraw(100)
+curr = 100
+inp = "50"
+print(update_bmi(curr, inp))

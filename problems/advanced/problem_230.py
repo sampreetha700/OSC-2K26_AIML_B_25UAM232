@@ -1,33 +1,27 @@
 """
-Problem 230: JSON Data Processor
-Error Type: TYPE_ERROR
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
+Problem 230: Airline SearchEngine
+Error Type: LOGICAL
 Difficulty: Advanced
 """
 
-# Problem: Read JSON data from a file and process it, but assume a wrong data structure.
-# Expected Output: "Processed 2 records."
+class AirlineUser:
+    def __init__(self, name, role):
+        self.name = name
+        self.role = role
 
-import json
+class SearchEngine:
+    def __init__(self):
+        self.users = []
+        self.logs = []
 
-# Assume data.json contains: {"records": [{"id": 1}, {"id": 2}]}
-json_data = '{"records": [{"id": 1}, {"id": 2}]}'
-with open("data.json", "w") as f:
-    f.write(json_data)
+    def add_user(self, user):
+        self.users.append(user)
+        # Bug: Trying to access attribute that might not exist or private
+        self.log_action(f"Added {user.username}") # user.name is correct, username wrong
 
-def process_records(filename):
-    with open(filename, 'r') as f:
-        data = json.load(f)
-        # TypeError: 'dict' object is not iterable. Should be data['records']
-        for record in data:
-            print(f"Processing record id: {record['id']}")
-    print(f"Processed {len(data)} records.")
+    def log_action(self, msg):
+        self.logs.append(msg)
 
-process_records("data.json")
-os.remove("data.json")
+sys = SearchEngine()
+u = AirlineUser("Alice", "Admin")
+sys.add_user(u)

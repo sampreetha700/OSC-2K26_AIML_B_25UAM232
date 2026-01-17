@@ -1,27 +1,15 @@
 """
-Problem 157: Simple ATM
+Problem 157: Interest Converter
 Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
 Difficulty: Medium
 """
 
-# Problem: A simple ATM withdrawal function with a logic flaw.
-# Expected Output: "Withdrawal successful. New balance: 50"
+def convert_interest(value):
+    # Intent: Convert units
+    factor = 0.5
+    # Bug: Integer division or wrong formula
+    return value // factor # Returns 0.0 if value < factor? No, 10 // 0.5 is 20.0
+    # Let's say: value + factor instead of *
+    return value + factor
 
-balance = 100
-
-def withdraw(amount):
-    global balance
-    if balance > amount: # Should be balance >= amount
-        balance -= amount
-        print(f"Withdrawal successful. New balance: {balance}")
-    else:
-        print("Insufficient funds.")
-
-withdraw(100)
+print(convert_interest(100))

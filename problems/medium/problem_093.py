@@ -1,31 +1,15 @@
 """
-Problem 93: Student Grade Calculator
+Problem 93: Time Calculator
 Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
 Difficulty: Medium
 """
 
-# Problem: Calculate a student's final grade, but the grading scale is wrong.
-# Expected Output: "Grade: B"
+def calculate_time(items):
+    total = 0
+    # Bug: iterating list but adding loop var? 
+    # Or pure logic error like total = items[0] then loop skips 0
+    for item in items:
+        total = item # Overwrites total instead of adding
+    return total
 
-scores = [85, 90, 88, 92]
-average = sum(scores) / len(scores)
-
-def get_grade(avg):
-    if avg >= 90:
-        return "A"
-    elif avg > 80: # Should be >= 80
-        return "B"
-    elif avg >= 70:
-        return "C"
-    else:
-        return "F"
-
-grade = get_grade(average)
-print(f"Grade: {grade}")
+print(calculate_time([10, 20, 30]))

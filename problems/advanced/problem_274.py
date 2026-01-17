@@ -1,37 +1,30 @@
 """
-Problem 274: Configuration File Parser
+Problem 274: Social DatabaseManager
 Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
 Difficulty: Advanced
 """
 
-# Problem: A script to parse a simple .ini style config file, but it handles sections incorrectly.
-# Expected Output: {'user': {'name': 'alice'}, 'database': {'host': 'localhost'}}
+class SocialRecord:
+    def __init__(self, id, data):
+        self.id = id
+        self.data = data
 
-config_text = """
-[user]
-name = alice
-[database]
-host = localhost
-"""
-def parse_config(text):
-    config = {}
-    current_section = None
-    for line in text.strip().split('\n'):
-        line = line.strip()
-        if line.startswith('[') and line.endswith(']'):
-            current_section = line[1:-1]
-            config[current_section] = {}
-        elif '=' in line and current_section:
-            key, value = line.split('=', 1)
-            # Logical error: assigns to the same dict every time
-            config[key.strip()] = value.strip()
-    return config
-
-print(parse_config(config_text))
+class DatabaseManager:
+    def __init__(self):
+        self.db = {}
+        
+    def save(self, record):
+        # Bug: Using record as key directly (unhashable check?)
+        # Or overwriting incorrectly
+        self.db[record.id] = record
+        
+    def get(self, id):
+        return self.db.get(id) # returns None if missing
+        
+    def update(self, id, new_data):
+        rec = self.get(id)
+        # Bug: what if rec is None?
+        rec.data = new_data # AttributeError if None
+        
+m = DatabaseManager()
+m.update(99, "New") # 99 doesn't exist

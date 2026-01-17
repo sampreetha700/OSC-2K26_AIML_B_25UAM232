@@ -1,33 +1,30 @@
 """
-Problem 238: JSON Data Processor
-Error Type: TYPE_ERROR
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
+Problem 238: Restaurant DatabaseManager
+Error Type: LOGICAL
 Difficulty: Advanced
 """
 
-# Problem: Read JSON data from a file and process it, but assume a wrong data structure.
-# Expected Output: "Processed 2 records."
+class RestaurantRecord:
+    def __init__(self, id, data):
+        self.id = id
+        self.data = data
 
-import json
-
-# Assume data.json contains: {"records": [{"id": 1}, {"id": 2}]}
-json_data = '{"records": [{"id": 1}, {"id": 2}]}'
-with open("data.json", "w") as f:
-    f.write(json_data)
-
-def process_records(filename):
-    with open(filename, 'r') as f:
-        data = json.load(f)
-        # TypeError: 'dict' object is not iterable. Should be data['records']
-        for record in data:
-            print(f"Processing record id: {record['id']}")
-    print(f"Processed {len(data)} records.")
-
-process_records("data.json")
-os.remove("data.json")
+class DatabaseManager:
+    def __init__(self):
+        self.db = {}
+        
+    def save(self, record):
+        # Bug: Using record as key directly (unhashable check?)
+        # Or overwriting incorrectly
+        self.db[record.id] = record
+        
+    def get(self, id):
+        return self.db.get(id) # returns None if missing
+        
+    def update(self, id, new_data):
+        rec = self.get(id)
+        # Bug: what if rec is None?
+        rec.data = new_data # AttributeError if None
+        
+m = DatabaseManager()
+m.update(99, "New") # 99 doesn't exist

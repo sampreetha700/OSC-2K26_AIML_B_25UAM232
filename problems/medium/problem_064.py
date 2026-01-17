@@ -1,34 +1,21 @@
 """
-Problem 64: Password Strength Checker
+Problem 64: Grade Searcher
 Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
 Difficulty: Medium
 """
 
-# Problem: A password checker that miscalculates the score.
-# Expected Output: "Strength: Medium"
+def check_grade(val):
+    # Intent: Check Status
+    # Bug: assignment in if
+    # if val = 1: # Syntax technically but often passed as logic in detailed description
+    #    return True
 
-def check_password_strength(password):
-    score = 0
-    if len(password) >= 8:
-        score += 1
-    if any(char.isdigit() for char in password):
-        score += 1
-    if any(char.isupper() for char in password):
-        score += 1
+    if val > 10:
+        return 'High'
+    if val > 5:
+        return 'Medium'
+    return 'Low' 
+    # If val is 20, returns High. If order swapped?
+    # if val > 5: return Medium; if val > 10: return High. 20 -> Medium.
     
-    # Logic error in score interpretation
-    if score == 3:
-        return "Strong"
-    elif score == 2:
-        return "Weak" # Should be Medium
-    else:
-        return "Medium" # Should be Weak
-
-print(f"Strength: {check_password_strength('Password123')}")
+print(check_grade(20))

@@ -1,33 +1,27 @@
 """
-Problem 237: Simple Bank Account (Class)
+Problem 237: Restaurant AuthSystem
 Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
 Difficulty: Advanced
 """
 
-# Problem: A BankAccount class that allows overdrafts due to a logic flaw.
-# Expected Output: "Error: Insufficient funds."
+class RestaurantUser:
+    def __init__(self, name, role):
+        self.name = name
+        self.role = role
 
-class BankAccount:
-    def __init__(self, balance=0):
-        self.balance = balance
+class AuthSystem:
+    def __init__(self):
+        self.users = []
+        self.logs = []
 
-    def deposit(self, amount):
-        self.balance += amount
+    def add_user(self, user):
+        self.users.append(user)
+        # Bug: Trying to access attribute that might not exist or private
+        self.log_action(f"Added {user.username}") # user.name is correct, username wrong
 
-    def withdraw(self, amount):
-        if amount < self.balance: # Should be <=
-            self.balance -= amount
-            print("Withdrawal successful.")
-        else:
-            print("Error: Insufficient funds.")
+    def log_action(self, msg):
+        self.logs.append(msg)
 
-acc = BankAccount(100)
-acc.withdraw(100) # This should be allowed
-acc.withdraw(1)   # This should fail
+sys = AuthSystem()
+u = RestaurantUser("Alice", "Admin")
+sys.add_user(u)

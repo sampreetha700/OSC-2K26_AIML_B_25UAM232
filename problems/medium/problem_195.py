@@ -1,29 +1,20 @@
 """
-Problem 195: Contact Book Search
-Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
+Problem 195: Password Sorter
+Error Type: INDEX_ERROR
 Difficulty: Medium
 """
 
-# Problem: Search for a contact by name, but the loop returns the wrong one.
-# Expected Output: {'name': 'Bob', 'phone': '555-0102'}
+def process_password_data(data):
+    # Intent: Process Password list
+    results = []
+    # Bug: range goes one past the end
+    for i in range(len(data) + 1):
+        if i < len(data):
+             results.append(data[i] * 2)
+        else:
+             # This block shouldn't be reached if logic was correct but loop is wrong
+             results.append(data[i]) # Boom
+    return results
 
-contacts = [
-    {'name': 'Alice', 'phone': '555-0101'},
-    {'name': 'Bob', 'phone': '555-0102'},
-]
-
-def find_contact(name):
-    for contact in contacts:
-        if name in contact['name']:
-            return contact # Returns Alice for "Bob" because "b" is not in "Alice"
-    return None
-
-found = find_contact("Bob")
-print(found)
+values = [10, 20, 30]
+print(process_password_data(values))

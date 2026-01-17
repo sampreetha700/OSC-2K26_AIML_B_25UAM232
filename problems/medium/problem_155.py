@@ -1,24 +1,21 @@
 """
-Problem 155: To-Do List
-Error Type: VALUE_ERROR
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
+Problem 155: Loan Searcher
+Error Type: LOGICAL
 Difficulty: Medium
 """
 
-# Problem: Remove an item from a to-do list, but the item doesn't exist.
-# Expected Output: Should handle the error, e.g., print "Item not found."
+def check_loan(val):
+    # Intent: Check Status
+    # Bug: assignment in if
+    # if val = 1: # Syntax technically but often passed as logic in detailed description
+    #    return True
 
-todo_list = ["laundry", "dishes", "shopping"]
-
-def remove_item(item):
-    todo_list.remove(item) # Raises ValueError if item is not in list
-    print(f"Removed '{item}'")
-
-remove_item("coding")
-print(todo_list)
+    if val > 10:
+        return 'High'
+    if val > 5:
+        return 'Medium'
+    return 'Low' 
+    # If val is 20, returns High. If order swapped?
+    # if val > 5: return Medium; if val > 10: return High. 20 -> Medium.
+    
+print(check_loan(20))

@@ -1,38 +1,28 @@
 """
-Problem 271: Gradebook Application (Class)
+Problem 271: Stock PaymentGateway
 Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
 Difficulty: Advanced
 """
 
-# Problem: A Gradebook class that incorrectly calculates the class average.
-# Expected Output: "Class Average: 85.0"
+class StockTransaction:
+    def __init__(self, amount):
+        self.amount = amount
+        self.status = 'PENDING'
 
-class Gradebook:
-    def __init__(self):
-        self.students = {}
-
-    def add_student(self, name, grades):
-        self.students[name] = grades
-
-    def get_student_average(self, name):
-        grades = self.students.get(name, [])
-        return sum(grades) / len(grades) if grades else 0
-
-    def get_class_average(self):
-        total_avg = 0
-        # Logic error: This calculates the average of averages, which is wrong.
-        for name in self.students:
-            total_avg += self.get_student_average(name)
-        return total_avg / len(self.students) if self.students else 0
-
-book = Gradebook()
-book.add_student("Alice", [80, 90]) # Avg 85
-book.add_student("Bob", [70, 100]) # Avg 85
-print(f"Class Average: {book.get_class_average()}")
+class PaymentGateway:
+    def process(self, tx):
+        if tx.amount < 0:
+            print("Invalid")
+            return
+        
+        # Bug: Logic error in discount
+        if tx.amount > 1000:
+            tx.amount = tx.amount * 0.9 # Apply discount
+            
+        # Actual processing logic missing or state not updated
+        tx.status == 'COMPLETED' # Comparison instead of assignment
+        
+t = StockTransaction(1500)
+gw = PaymentGateway()
+gw.process(t)
+print(t.status) # Still PENDING

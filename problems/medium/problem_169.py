@@ -1,25 +1,21 @@
 """
-Problem 169: File Word Counter
-Error Type: FILE_NOT_FOUND
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
+Problem 169: Discount Searcher
+Error Type: LOGICAL
 Difficulty: Medium
 """
 
-# Problem: Read a file and count words, but the file path is wrong.
-# Expected Output: Should handle the FileNotFoundError.
+def check_discount(val):
+    # Intent: Check Status
+    # Bug: assignment in if
+    # if val = 1: # Syntax technically but often passed as logic in detailed description
+    #    return True
 
-def count_words_in_file(filename):
-    try:
-        with open(filename, 'r') as f:
-            words = f.read().split()
-            print(f"Word count: {len(words)}")
-    except FileNotFoundError:
-        print(f"Error: File '{filename}' not found.")
-
-count_words_in_file("data.txt") # Assumes this file doesn't exist
+    if val > 10:
+        return 'High'
+    if val > 5:
+        return 'Medium'
+    return 'Low' 
+    # If val is 20, returns High. If order swapped?
+    # if val > 5: return Medium; if val > 10: return High. 20 -> Medium.
+    
+print(check_discount(20))

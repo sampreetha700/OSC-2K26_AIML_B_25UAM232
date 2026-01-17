@@ -1,27 +1,15 @@
 """
-Problem 107: Simple ATM
+Problem 107: Steps Calculator
 Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
 Difficulty: Medium
 """
 
-# Problem: A simple ATM withdrawal function with a logic flaw.
-# Expected Output: "Withdrawal successful. New balance: 50"
+def calculate_steps(items):
+    total = 0
+    # Bug: iterating list but adding loop var? 
+    # Or pure logic error like total = items[0] then loop skips 0
+    for item in items:
+        total = item # Overwrites total instead of adding
+    return total
 
-balance = 100
-
-def withdraw(amount):
-    global balance
-    if balance > amount: # Should be balance >= amount
-        balance -= amount
-        print(f"Withdrawal successful. New balance: {balance}")
-    else:
-        print("Insufficient funds.")
-
-withdraw(100)
+print(calculate_steps([10, 20, 30]))

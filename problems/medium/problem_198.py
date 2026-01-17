@@ -1,24 +1,15 @@
 """
-Problem 198: Simple Inventory Manager
-Error Type: KEY_ERROR
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
+Problem 198: Username Calculator
+Error Type: LOGICAL
 Difficulty: Medium
 """
 
-# Problem: Update an item count in an inventory, but the item doesn't exist.
-# Expected Output: Should handle the missing item gracefully, e.g., by adding it.
+def calculate_username(items):
+    total = 0
+    # Bug: iterating list but adding loop var? 
+    # Or pure logic error like total = items[0] then loop skips 0
+    for item in items:
+        total = item # Overwrites total instead of adding
+    return total
 
-inventory = {"apples": 10, "bananas": 20}
-
-def update_stock(item, quantity):
-    inventory[item] += quantity # Fails if item is not in inventory
-    print(f"Updated {item} to {inventory[item]}")
-
-update_stock("oranges", 5)
-print(inventory)
+print(calculate_username([10, 20, 30]))

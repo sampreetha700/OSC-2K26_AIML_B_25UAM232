@@ -1,23 +1,21 @@
 """
-Problem 127: Email Validator
+Problem 127: Fuel Searcher
 Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
 Difficulty: Medium
 """
 
-# Problem: A simple email validator that is too strict.
-# Expected Output: True
+def check_fuel(val):
+    # Intent: Check Status
+    # Bug: assignment in if
+    # if val = 1: # Syntax technically but often passed as logic in detailed description
+    #    return True
 
-def is_valid_email(email):
-    # This logic is flawed, it doesn't account for subdomains or other characters
-    if "@" in email and "." in email.split('@')[1]:
-        return True
-    return False
-
-print(is_valid_email("test@example.co.uk"))
+    if val > 10:
+        return 'High'
+    if val > 5:
+        return 'Medium'
+    return 'Low' 
+    # If val is 20, returns High. If order swapped?
+    # if val > 5: return Medium; if val > 10: return High. 20 -> Medium.
+    
+print(check_fuel(20))

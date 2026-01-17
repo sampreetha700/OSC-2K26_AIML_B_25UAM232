@@ -1,27 +1,11 @@
 """
-Problem 131: Simple ATM
-Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
+Problem 131: Recipe Formatter
+Error Type: SYNTAX
 Difficulty: Medium
 """
 
-# Problem: A simple ATM withdrawal function with a logic flaw.
-# Expected Output: "Withdrawal successful. New balance: 50"
+def format_recipe(val)
+    # Bug: Missing colon above
+    return f"Value: {val}" 
 
-balance = 100
-
-def withdraw(amount):
-    global balance
-    if balance > amount: # Should be balance >= amount
-        balance -= amount
-        print(f"Withdrawal successful. New balance: {balance}")
-    else:
-        print("Insufficient funds.")
-
-withdraw(100)
+print(format_recipe(10))

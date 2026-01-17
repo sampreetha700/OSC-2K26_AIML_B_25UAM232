@@ -1,34 +1,15 @@
 """
-Problem 185: Password Strength Checker
+Problem 185: Age Converter
 Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
 Difficulty: Medium
 """
 
-# Problem: A password checker that miscalculates the score.
-# Expected Output: "Strength: Medium"
+def convert_age(value):
+    # Intent: Convert units
+    factor = 0.5
+    # Bug: Integer division or wrong formula
+    return value // factor # Returns 0.0 if value < factor? No, 10 // 0.5 is 20.0
+    # Let's say: value + factor instead of *
+    return value + factor
 
-def check_password_strength(password):
-    score = 0
-    if len(password) >= 8:
-        score += 1
-    if any(char.isdigit() for char in password):
-        score += 1
-    if any(char.isupper() for char in password):
-        score += 1
-    
-    # Logic error in score interpretation
-    if score == 3:
-        return "Strong"
-    elif score == 2:
-        return "Weak" # Should be Medium
-    else:
-        return "Medium" # Should be Weak
-
-print(f"Strength: {check_password_strength('Password123')}")
+print(convert_age(100))

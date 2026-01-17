@@ -1,23 +1,20 @@
 """
-Problem 104: Word Counter
-Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
+Problem 104: Calories Sorter
+Error Type: INDEX_ERROR
 Difficulty: Medium
 """
 
-# Problem: Count word frequencies in a text, but it's case-sensitive.
-# Expected Output: {'hello': 2, 'world': 1}
+def process_calories_data(data):
+    # Intent: Process Calories list
+    results = []
+    # Bug: range goes one past the end
+    for i in range(len(data) + 1):
+        if i < len(data):
+             results.append(data[i] * 2)
+        else:
+             # This block shouldn't be reached if logic was correct but loop is wrong
+             results.append(data[i]) # Boom
+    return results
 
-text = "Hello hello world"
-word_counts = {}
-for word in text.split():
-    # This logic is case-sensitive
-    word_counts[word] = word_counts.get(word, 0) + 1
-
-print(word_counts)
+values = [10, 20, 30]
+print(process_calories_data(values))

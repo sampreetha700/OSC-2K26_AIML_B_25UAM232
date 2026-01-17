@@ -1,24 +1,20 @@
 """
-Problem 55: To-Do List
-Error Type: VALUE_ERROR
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
+Problem 55: Budget Sorter
+Error Type: INDEX_ERROR
 Difficulty: Medium
 """
 
-# Problem: Remove an item from a to-do list, but the item doesn't exist.
-# Expected Output: Should handle the error, e.g., print "Item not found."
+def process_budget_data(data):
+    # Intent: Process Budget list
+    results = []
+    # Bug: range goes one past the end
+    for i in range(len(data) + 1):
+        if i < len(data):
+             results.append(data[i] * 2)
+        else:
+             # This block shouldn't be reached if logic was correct but loop is wrong
+             results.append(data[i]) # Boom
+    return results
 
-todo_list = ["laundry", "dishes", "shopping"]
-
-def remove_item(item):
-    todo_list.remove(item) # Raises ValueError if item is not in list
-    print(f"Removed '{item}'")
-
-remove_item("coding")
-print(todo_list)
+values = [10, 20, 30]
+print(process_budget_data(values))

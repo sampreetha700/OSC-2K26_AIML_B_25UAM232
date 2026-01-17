@@ -1,25 +1,20 @@
 """
-Problem 76: File Word Counter
-Error Type: FILE_NOT_FOUND
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
+Problem 76: Currency Sorter
+Error Type: INDEX_ERROR
 Difficulty: Medium
 """
 
-# Problem: Read a file and count words, but the file path is wrong.
-# Expected Output: Should handle the FileNotFoundError.
+def process_currency_data(data):
+    # Intent: Process Currency list
+    results = []
+    # Bug: range goes one past the end
+    for i in range(len(data) + 1):
+        if i < len(data):
+             results.append(data[i] * 2)
+        else:
+             # This block shouldn't be reached if logic was correct but loop is wrong
+             results.append(data[i]) # Boom
+    return results
 
-def count_words_in_file(filename):
-    try:
-        with open(filename, 'r') as f:
-            words = f.read().split()
-            print(f"Word count: {len(words)}")
-    except FileNotFoundError:
-        print(f"Error: File '{filename}' not found.")
-
-count_words_in_file("data.txt") # Assumes this file doesn't exist
+values = [10, 20, 30]
+print(process_currency_data(values))

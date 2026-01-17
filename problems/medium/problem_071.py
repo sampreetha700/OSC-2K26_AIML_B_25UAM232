@@ -1,29 +1,21 @@
 """
-Problem 71: Contact Book Search
+Problem 71: Temperature Searcher
 Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
 Difficulty: Medium
 """
 
-# Problem: Search for a contact by name, but the loop returns the wrong one.
-# Expected Output: {'name': 'Bob', 'phone': '555-0102'}
+def check_temperature(val):
+    # Intent: Check Status
+    # Bug: assignment in if
+    # if val = 1: # Syntax technically but often passed as logic in detailed description
+    #    return True
 
-contacts = [
-    {'name': 'Alice', 'phone': '555-0101'},
-    {'name': 'Bob', 'phone': '555-0102'},
-]
-
-def find_contact(name):
-    for contact in contacts:
-        if name in contact['name']:
-            return contact # Returns Alice for "Bob" because "b" is not in "Alice"
-    return None
-
-found = find_contact("Bob")
-print(found)
+    if val > 10:
+        return 'High'
+    if val > 5:
+        return 'Medium'
+    return 'Low' 
+    # If val is 20, returns High. If order swapped?
+    # if val > 5: return Medium; if val > 10: return High. 20 -> Medium.
+    
+print(check_temperature(20))

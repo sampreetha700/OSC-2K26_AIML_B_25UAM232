@@ -1,23 +1,14 @@
 """
-Problem 77: Email Validator
-Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
+Problem 77: Currency Filter
+Error Type: TYPE_ERROR
 Difficulty: Medium
 """
 
-# Problem: A simple email validator that is too strict.
-# Expected Output: True
+def update_currency(current_val, input_val):
+    # Intent: Add input to current
+    # Bug: input_val assumed int, might be string (common in input())
+    return current_val + input_val
 
-def is_valid_email(email):
-    # This logic is flawed, it doesn't account for subdomains or other characters
-    if "@" in email and "." in email.split('@')[1]:
-        return True
-    return False
-
-print(is_valid_email("test@example.co.uk"))
+curr = 100
+inp = "50"
+print(update_currency(curr, inp))

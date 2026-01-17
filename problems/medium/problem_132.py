@@ -1,27 +1,20 @@
 """
-Problem 132: Simple ATM
-Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
+Problem 132: Recipe Sorter
+Error Type: INDEX_ERROR
 Difficulty: Medium
 """
 
-# Problem: A simple ATM withdrawal function with a logic flaw.
-# Expected Output: "Withdrawal successful. New balance: 50"
+def process_recipe_data(data):
+    # Intent: Process Recipe list
+    results = []
+    # Bug: range goes one past the end
+    for i in range(len(data) + 1):
+        if i < len(data):
+             results.append(data[i] * 2)
+        else:
+             # This block shouldn't be reached if logic was correct but loop is wrong
+             results.append(data[i]) # Boom
+    return results
 
-balance = 100
-
-def withdraw(amount):
-    global balance
-    if balance > amount: # Should be balance >= amount
-        balance -= amount
-        print(f"Withdrawal successful. New balance: {balance}")
-    else:
-        print("Insufficient funds.")
-
-withdraw(100)
+values = [10, 20, 30]
+print(process_recipe_data(values))

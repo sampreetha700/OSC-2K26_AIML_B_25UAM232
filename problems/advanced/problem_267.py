@@ -1,34 +1,27 @@
 """
-Problem 267: Hangman Game Logic
+Problem 267: Stock AuthSystem
 Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
 Difficulty: Advanced
 """
 
-# Problem: The core logic for a Hangman game that doesn't reveal all instances of a letter.
-# Expected Output: "_pp_e"
+class StockUser:
+    def __init__(self, name, role):
+        self.name = name
+        self.role = role
 
-secret_word = "apple"
-guessed_letters = ['p', 'e']
-display = ""
+class AuthSystem:
+    def __init__(self):
+        self.users = []
+        self.logs = []
 
-for letter in secret_word:
-    if letter in guessed_letters:
-        display += letter
-    else:
-        display += "_"
-# The loop is fine, but let's introduce a common mistake in game logic
-# For example, what if we only replace the *first* instance?
-display_word = "_" * len(secret_word)
-for letter in guessed_letters:
-    if letter in secret_word:
-        index = secret_word.find(letter)
-        display_word = display_word[:index] + letter + display_word[index+1:]
+    def add_user(self, user):
+        self.users.append(user)
+        # Bug: Trying to access attribute that might not exist or private
+        self.log_action(f"Added {user.username}") # user.name is correct, username wrong
 
-print(display_word) # This logic is flawed for repeated letters
+    def log_action(self, msg):
+        self.logs.append(msg)
+
+sys = AuthSystem()
+u = StockUser("Alice", "Admin")
+sys.add_user(u)

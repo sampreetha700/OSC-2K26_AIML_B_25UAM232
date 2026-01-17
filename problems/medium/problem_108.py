@@ -1,24 +1,15 @@
 """
-Problem 108: Dice Rolling Simulator
+Problem 108: Steps Converter
 Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
 Difficulty: Medium
 """
 
-# Problem: Simulate rolling two dice, but the range of numbers is incorrect.
-# Expected Output: A number between 2 and 12.
+def convert_steps(value):
+    # Intent: Convert units
+    factor = 0.5
+    # Bug: Integer division or wrong formula
+    return value // factor # Returns 0.0 if value < factor? No, 10 // 0.5 is 20.0
+    # Let's say: value + factor instead of *
+    return value + factor
 
-import random
-
-def roll_dice():
-    die1 = random.randint(1, 7) # Incorrect upper bound
-    die2 = random.randint(1, 6)
-    return die1 + die2
-
-print(f"You rolled a {roll_dice()}")
+print(convert_steps(100))

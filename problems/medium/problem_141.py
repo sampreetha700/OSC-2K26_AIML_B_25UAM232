@@ -1,24 +1,21 @@
 """
-Problem 141: Simple Inventory Manager
-Error Type: KEY_ERROR
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
+Problem 141: Score Searcher
+Error Type: LOGICAL
 Difficulty: Medium
 """
 
-# Problem: Update an item count in an inventory, but the item doesn't exist.
-# Expected Output: Should handle the missing item gracefully, e.g., by adding it.
+def check_score(val):
+    # Intent: Check Status
+    # Bug: assignment in if
+    # if val = 1: # Syntax technically but often passed as logic in detailed description
+    #    return True
 
-inventory = {"apples": 10, "bananas": 20}
-
-def update_stock(item, quantity):
-    inventory[item] += quantity # Fails if item is not in inventory
-    print(f"Updated {item} to {inventory[item]}")
-
-update_stock("oranges", 5)
-print(inventory)
+    if val > 10:
+        return 'High'
+    if val > 5:
+        return 'Medium'
+    return 'Low' 
+    # If val is 20, returns High. If order swapped?
+    # if val > 5: return Medium; if val > 10: return High. 20 -> Medium.
+    
+print(check_score(20))

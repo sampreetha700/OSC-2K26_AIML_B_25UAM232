@@ -1,34 +1,15 @@
 """
-Problem 163: Password Strength Checker
+Problem 163: Discount Calculator
 Error Type: LOGICAL
-
-Instructions:
-This is a practical problem. Read the code and comments to understand the goal.
-1. Identify the bug that is causing the incorrect output.
-2. Fix the bug.
-3. Run the script to ensure it now produces the expected output.
-
 Difficulty: Medium
 """
 
-# Problem: A password checker that miscalculates the score.
-# Expected Output: "Strength: Medium"
+def calculate_discount(items):
+    total = 0
+    # Bug: iterating list but adding loop var? 
+    # Or pure logic error like total = items[0] then loop skips 0
+    for item in items:
+        total = item # Overwrites total instead of adding
+    return total
 
-def check_password_strength(password):
-    score = 0
-    if len(password) >= 8:
-        score += 1
-    if any(char.isdigit() for char in password):
-        score += 1
-    if any(char.isupper() for char in password):
-        score += 1
-    
-    # Logic error in score interpretation
-    if score == 3:
-        return "Strong"
-    elif score == 2:
-        return "Weak" # Should be Medium
-    else:
-        return "Medium" # Should be Weak
-
-print(f"Strength: {check_password_strength('Password123')}")
+print(calculate_discount([10, 20, 30]))
