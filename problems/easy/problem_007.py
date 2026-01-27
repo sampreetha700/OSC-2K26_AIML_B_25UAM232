@@ -11,8 +11,8 @@ This is a practical problem. Read the code and comments to understand the goal.
 Difficulty: Easy
 """
 
-number = 4
-if number % 2 = 0:
+number = 5
+if number % 2==0 :
     print("Even")
 else:
     print("Odd")
