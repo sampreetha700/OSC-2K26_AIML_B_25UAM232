@@ -8,5 +8,5 @@ def update_currency(current_val, input_val):
     return current_val + input_val
 
 curr = 100
-inp = "50"
+inp = 50
 print(update_currency(curr, inp))
