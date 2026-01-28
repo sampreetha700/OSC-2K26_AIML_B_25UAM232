@@ -6,8 +6,8 @@ Difficulty: Medium
 
 def process_currency_data(data):
     results = []
-    for i in range(len(data) + 1):
-        if i < len(data):
+    for i in range(len(data)):
+        if i ==len(data)-1:
              results.append(data[i] * 2)
         else:
              results.append(data[i])
