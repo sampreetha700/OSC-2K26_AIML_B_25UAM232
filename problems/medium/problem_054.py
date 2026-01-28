@@ -4,7 +4,7 @@ Error Type: SYNTAX
 Difficulty: Medium
 """
 
-def format_budget(val)
+def format_budget(val):
    
     return f"Value: {val}" 
 
